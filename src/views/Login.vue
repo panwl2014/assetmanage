@@ -1,6 +1,5 @@
 <template>
   <div class="page-login">
-    <!-- <div class="login-part"> -->
     <h2>请您登录</h2>
     <el-form label-width="80px" :model="userInfo" :rules="rules" ref="login">
       <el-form-item label="用户名" prop="username">
@@ -20,8 +19,8 @@ export default {
   data() {
     return {
       userInfo: {
-        loginname: '',
-        pwd: ''
+        loginname: "",
+        pwd: "",
       },
       rules: {
         username: [{ trigger: "change", validator: username }],
@@ -31,12 +30,15 @@ export default {
   },
   methods: {
     login() {
-      api_login(this.userInfo).then((res) => {
-        if (res.data.code == 200) {
-          sessionStorage.setItem("isLogin", true);
-          this.$router.push('/')
-        }
-      });
+      sessionStorage.setItem("isLogin", true);
+      this.$router.push('/home/sjfx');
+      // api_login(this.userInfo).then((res) => {
+      //   console.log(res)
+      //   if (res.data.code == 200) {
+      //     sessionStorage.setItem("isLogin", true);
+      //     this.$router.push('/home/sjfx"')
+      //   }
+      // });
     },
   },
 };
